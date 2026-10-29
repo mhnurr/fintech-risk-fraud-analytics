@@ -46,3 +46,12 @@ Hasilnya menunjukkan di rentang nominal mana fraud paling terkonsentrasi dan ber
 - Fraud rate is highest at 01:00-06:00 (e.g. TRANSFER at 04:00: 70.66%).
 - CASH_OUT >= 1M has an 81.61% fraud rate; transactions >= 1M are ~4.7% of
   TRANSFER/CASH_OUT volume but ~87% of fraud value.
+
+
+  ## Cleaning Findings
+- No NULLs, negatives or duplicates; no rows removed (see clean.cleaning_log).
+- Merchant destinations (M...) appear only in PAYMENT transactions.
+- Origin-balance inconsistency depends strongly on type: TRANSFER 95.2%, CASH_OUT 88.5%,
+  PAYMENT 51.2%, DEBIT 28.4%, CASH_IN ~0%.
+- 97.6% of fraud empties the origin balance (fraud rate 0.674% vs 0.013%), but the rule alone
+  flags ~1.19M transactions, so it needs to be combined with other signals.
