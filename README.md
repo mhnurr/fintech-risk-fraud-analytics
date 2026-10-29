@@ -39,3 +39,10 @@ GROUP BY type, rentang_nominal
 ORDER BY type, rentang_nominal;
 
 Hasilnya menunjukkan di rentang nominal mana fraud paling terkonsentrasi dan berapa nilai rupiah (dalam satuan mata uang dataset) yang terlibat. Itu bahan untuk menghitung potensi kerugian yang bisa dicegah.
+
+
+## Early Findings (PaySim, simulated data)
+- Fraud occurs only in TRANSFER and CASH_OUT.
+- Fraud rate is highest at 01:00-06:00 (e.g. TRANSFER at 04:00: 70.66%).
+- CASH_OUT >= 1M has an 81.61% fraud rate; transactions >= 1M are ~4.7% of
+  TRANSFER/CASH_OUT volume but ~87% of fraud value.
